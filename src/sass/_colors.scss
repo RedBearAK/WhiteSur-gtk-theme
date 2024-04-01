@@ -283,8 +283,20 @@ $button_borders:                    if($variant == 'light', $button_border, $dar
 // WM colors
 $wm_outline_light:                  0 0 0 2px rgba(black, 0.03), 0 0 0 1px rgba(black, 0.12);
 $wm_outline_dark:                   0 0 0 2px rgba(black, 0.1), 0 0 0 1px rgba(black, 0.75);
-$wm_shadow:                         if($variant=='light', rgba(black, 0.15), rgba(black, 0.35));
-$wm_shadow_backdrop:                if($variant=='light', rgba(black, 0.08), rgba(black, 0.15));
+
+// Light shadow for dark theme using lower opacity
+$light_shadow_color: rgba(white, 0.15); // Light color with low opacity for subtle effect
+$light_shadow_backdrop: rgba(white, 0.08); // Even more subtle for the backdrop
+
+// Original dark shadow for light theme using higher opacity
+$dark_shadow_color: rgba(black, 0.35); // Dark color for shadows in light theme
+$dark_shadow_backdrop: rgba(black, 0.15); // Backdrop shadow in light theme
+
+// Setting the shadow color based on the theme variant
+$wm_shadow: if($variant == 'light', $dark_shadow_color, $light_shadow_color);
+$wm_shadow_backdrop: if($variant == 'light', $dark_shadow_backdrop, $light_shadow_backdrop);
+// $wm_shadow:                         if($variant=='light', rgba(black, 0.15), rgba(black, 0.35));
+// $wm_shadow_backdrop:                if($variant=='light', rgba(black, 0.08), rgba(black, 0.15));
 $wm_outline:                        if($variant=='light', $wm_outline_light, $wm_outline_dark);
 
 // WM Buttons
